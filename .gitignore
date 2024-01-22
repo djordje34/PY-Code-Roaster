@@ -18,4 +18,4 @@ logs/
 .DS_Store
 __pycache__/
 .cpytest_cache/
-.pdf
+*.pdf
