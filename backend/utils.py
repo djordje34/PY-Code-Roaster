@@ -55,13 +55,14 @@ def get_llm():
 def get_roast(code,llm):
     chain = LLMChain(llm=llm, prompt=roast_prompt)
     cont_chain = LLMChain(llm=llm, prompt=sum_prompt)
-    code = code.replace("    ","\t")
-    code = re.sub(r'\n+', '\n', code)
     python_splitter = RecursiveCharacterTextSplitter.from_language(
     language=Language.PYTHON, chunk_size=500, chunk_overlap=0
     )
+    
+    code = preprocess_code(code)
     python_docs = python_splitter.create_documents([code])
     fst_res = chain.invoke(python_docs)
+    
     iter = 0
     while('DONE' not in fst_res['text']):
         fst_res['text'] += cont_chain.invoke(fst_res)['text']
@@ -71,6 +72,15 @@ def get_roast(code,llm):
 
     return fst_res['text']
     
+    
+def preprocess_code(code:str)->str:
+    lines = code.split('\n')
+    cleaned_lines = [line.strip() for line in lines if line.strip()]
+    code = '\n'.join(cleaned_lines)
+    code = code.replace("    ","\t")
+    code = re.sub(r'\n+', '\n', code)
+    code = re.sub(r'\s+', ' ', code)
+    return code
 #user_pasted_code = 
 """
 def getRecommendations(self,data):

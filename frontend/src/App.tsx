@@ -1,12 +1,12 @@
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vs2015 } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import ReactMarkdown from 'react-markdown';
+
 
 function App() {
   const [code, setCode] = useState<string>('');
@@ -47,11 +47,8 @@ function App() {
   };
 
   return (
-    <div>
-      <nav>
-        <h1>Code Roaster</h1>
-      </nav>
-      <div className="container">
+    <Container className='parent'>
+      <Row style={{ minWidth: '80%', position: 'relative', borderRadius: '5px', padding: '10px', marginBottom: '10%' }}>
       <textarea
       placeholder="Enter your code here"
       value={code}
@@ -81,8 +78,8 @@ function App() {
         Toggle Display ({displayMode === 'syntax' ? 'Markdown' : 'Syntax Highlighting'})
       </button>
         <button onClick={handleRoastCode}>Roast Code</button>
-      </div>
-      <div className="roasted-box" style={{ minWidth: '80%', position: 'relative', borderRadius: '5px', padding: '10px', marginBottom: '10%' }}>
+        </Row>
+      <Row className="roasted-box" style={{ minWidth: '80%', position: 'relative', borderRadius: '5px', padding: '10px', marginBottom: '10%' }}>
         {!loading && <h2 style={{ color: '#f8f8f2' }}>Roasted Code</h2>}
         {loading && <div className="loading-spinner m-2"></div>}
         <div style={{ textAlign: 'left' }}>
@@ -104,8 +101,8 @@ function App() {
             <ReactMarkdown>{roastedResult}</ReactMarkdown>
           )}
         </div>
-      </div>
-    </div>
+        </Row>
+      </Container>
   );
 }
 

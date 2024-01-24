@@ -66,3 +66,28 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+.nav{
+  position:absolute;
+  top:0;
+  width:100%;
+  background-color:rgba(70, 121, 162, 0.5);
+}
+.rstbrnd{
+  text-align: left !important;
+  vertical-align:middle;
+}
+.brand{
+  vertical-align:middle;
+  height:100%;
+  margin:10px;
+  margin-left:10px;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  transition: transform .5s;
+}
+
+.brand:hover{
+  transform: scale(1.33);
+}

@@ -1,8 +1,26 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
   min-width: 70%;
+  height:100%;
+}
+.parent{
+  width:80%;
+  text-align: center;
+  align-items: center;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  margin:auto;
+  margin-top:10%;
+}
+.fst{
+  min-width: '80%';
+   position: 'relative';
+   border-radius: '5px';
+   padding: '10px';
+   margin-bottom: '10%';
 }
 
 .logo {
