@@ -67,12 +67,19 @@ button:focus-visible {
   }
 }
 
-
 .nav{
   position:absolute;
   top:0;
   width:100%;
   background-color:rgba(70, 121, 162, 0.5);
+  margin-bottom:10%;
+  background: linear-gradient(to right, #4679A2, #43A18E);
+  width: 100%;
+}
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .rstbrnd{
   text-align: left !important;
@@ -90,4 +97,11 @@ button:focus-visible {
 
 .brand:hover{
   transform: scale(1.33);
+}
+
+.titlestuff{
+  text-align: center;
+}
+.titlestuff h1{
+  margin:5px;
 }

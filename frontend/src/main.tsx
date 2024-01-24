@@ -16,6 +16,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               height="60"
               className="brand"
             />{' '}
+            <div className='titlestuff'>
+      <h1>CodeRoast</h1>
+      Where code meets humor! 🚀
+      </div>
+      <div></div>
         </Container>
       </Navbar>
     <App />

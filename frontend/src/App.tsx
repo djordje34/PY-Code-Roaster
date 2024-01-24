@@ -77,7 +77,7 @@ function App() {
       <button onClick={handleToggleDisplayMode}>
         Toggle Display ({displayMode === 'syntax' ? 'Markdown' : 'Syntax Highlighting'})
       </button>
-        <button onClick={handleRoastCode}>Roast Code</button>
+        <button onClick={handleRoastCode}>Roast Away!</button>
         </Row>
       <Row className="roasted-box" style={{ minWidth: '80%', position: 'relative', borderRadius: '5px', padding: '10px', marginBottom: '10%' }}>
         {!loading && <h2 style={{ color: '#f8f8f2' }}>Roasted Code</h2>}
