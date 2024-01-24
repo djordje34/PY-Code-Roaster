@@ -28,7 +28,7 @@ Follow these steps to run CodeRoaster locally:
 2. **Set up Python virtual environment:**
     ```bash
     python -m venv $envname
-    source venv/bin/activate
+    source $envname/bin/activate
     ```
     
 3. **Install Python dependencies:**
