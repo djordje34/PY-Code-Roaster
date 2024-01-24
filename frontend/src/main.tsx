@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
               className="brand"
             />{' '}
             <div className='titlestuff'>
-      <h1>CodeRoast</h1>
+      <h1>CodeRoaster</h1>
       Where code meets humor! 🚀
       </div>
       <div></div>
