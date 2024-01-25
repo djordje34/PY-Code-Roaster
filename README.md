@@ -8,7 +8,8 @@ CodeRoaster is a web application that analyzes and roasts code snippets, providi
 
 - **Roasting Expertise:** Let CodeRoaster analyze your code and deliver a humorous and insightful roast.
 - **Language Agnostic:** CodeRoaster supports various programming languages. Bring on your Python, JavaScript, Java, and more!
-
+- **Output Representation:** CodeRoaster allows you to select you preferred output representation - either Markdown or code-like comments!
+  
 ## Technologies Used
 
 - **Backend:** Flask (Python)
