@@ -29,25 +29,25 @@ When your wit has reached its peak and the roasting is done, unleash the final b
 """
 sum_prompt_template = """
 Behold, the code you've summoned! 
-Prepare to witness its roasting by a master wordsmith, adept at turning flaws into fiery satire. 
+Prepare to witness its roasting by a master wordsmith, adept at turning flaws into fiery satire and parody. 
 Craft a hilariously scathing yet insightful critique that exposes every inefficiency and obfuscation. 
 Stick to the code in front of you, no need to conjure up phantom features – these real ones are juicy enough! 
 When your wit reaches its peak and the roasting is done, unleash the final blow: "DONE!"
-Before unleashing the final blow, make sure that the roast is done.
+Before unleashing the final blow, make sure that the roast is done. Be creative!
 
 This is the original code snippet:
 {code}
 
-Now, pay attention, dear model, and let it be known – your task is not complete until every flaw has been dissected, every quirk exposed, and the roast is brought to its glorious conclusion. Finish what you started; leave no line unroasted.
+Now, pay attention, and let it be known – your task is not complete until every flaw has been dissected, every quirk exposed, and the roast is brought to its glorious conclusion. Finish what you started; leave no line unroasted.
 </s>
 {text}
 """
 
 roast_prompt = PromptTemplate(template=roast_prompt_template, input_variables=["code"])
-sum_prompt = PromptTemplate(template=sum_prompt_template, input_variables=["text"])
+sum_prompt = PromptTemplate(template=sum_prompt_template, input_variables=["code","text"])
 def get_llm():
     return HuggingFaceHub(repo_id="openchat/openchat-3.5-0106",
-                         model_kwargs={"temperature": 0.2,  
+                         model_kwargs={"temperature": 0.5,  
                                       "max_length": 1024,
                                       "min_length":700,
                                       "top_k": 5}) 
@@ -60,9 +60,8 @@ def get_roast(code,llm):
     )
     
     code = preprocess_code(code)
-    python_docs = python_splitter.create_documents([code])
-    fst_res = chain.invoke(python_docs)
-    
+    #python_docs = python_splitter.create_documents([code])
+    fst_res = chain.invoke(code)
     iter = 0
     while('DONE' not in fst_res['text']):
         fst_res['text'] += cont_chain.invoke(fst_res)['text']
@@ -81,6 +80,9 @@ def preprocess_code(code:str)->str:
     code = re.sub(r'\n+', '\n', code)
     code = re.sub(r'\s+', ' ', code)
     return code
+
+
+#llm = get_llm()
 #user_pasted_code = 
 """
 def getRecommendations(self,data):
@@ -98,7 +100,7 @@ def getRecommendations(self,data):
         prediction = [fst_pred,sec_pred]
         return prediction
 """
-"""roast = get_roast(user_pasted_code,llm)
-print(roast)""" 
+#roast = get_roast(user_pasted_code,llm)
+#print(roast)
 
     
