@@ -21,7 +21,8 @@ Prepare to witness its roasting by a master wordsmith, adept at turning flaws in
 Craft a concise, searingly funny yet insightful takedown that exposes every inefficiency and obfuscation.
 Remember to use humor for roasting, and be ruthless!
 No need to fabricate phantom features – the real ones are juicy enough!
-When your wit has reached its peak and the roasting is done, unleash the final blow: "DONE!"
+When your wit reaches its peak and the roasting is done, unleash the final blow: "DONE!"
+Before unleashing the final blow, make sure that the roast is done in a spectacular fashion.
 </s>
 <|user|>
 {code}
@@ -29,12 +30,13 @@ When your wit has reached its peak and the roasting is done, unleash the final b
 <|assistant|>
 """
 sum_prompt_template = """
+<|system|>
 Behold, the code you've summoned! 
 Prepare to witness its roasting by a master wordsmith, adept at turning flaws into fiery satire and parody. 
 Craft a hilariously scathing yet insightful critique that exposes every inefficiency and obfuscation. 
 Stick to the code in front of you, no need to conjure up phantom features – these real ones are juicy enough! 
 When your wit reaches its peak and the roasting is done, unleash the final blow: "DONE!"
-Before unleashing the final blow, make sure that the roast is done.
+Before unleashing the final blow, make sure that the roast is done in a spectacular fashion.
 
 This is the original code snippet:
 {code}
@@ -43,15 +45,22 @@ Now, pay attention, and let it be known – your task is not complete until ever
 </s>
 {text}
 """
-#LET HIM BE RUTHLESS!
+
 roast_prompt = PromptTemplate(template=roast_prompt_template, input_variables=["code"])
 sum_prompt = PromptTemplate(template=sum_prompt_template, input_variables=["code","text"])
+
 def get_llm():
     return HuggingFaceHub(repo_id="openchat/openchat-3.5-0106",
-                         model_kwargs={"temperature": 0.5,  
+                         model_kwargs={"temperature": 0.1,  
                                       "max_length": 1024,
-                                      "min_length":700,
+                                      "min_length":256,
                                       "top_k": 5}) 
+
+def refine_model_response(model_response):
+    refined_response = ' '.join(model_response.split('\n'))
+    refined_response = refined_response.replace('. ', '.\n\n').replace('? ', '?\n')
+
+    return refined_response
 
 def get_roast(code,llm):
     chain = LLMChain(llm=llm, prompt=roast_prompt)
@@ -69,8 +78,10 @@ def get_roast(code,llm):
         iter +=1
         if(iter>=10):
             break
-
-    return fst_res['text']
+    
+    
+    
+    return refine_model_response(fst_res['text'])
     
     
 def preprocess_code(code:str)->str:
