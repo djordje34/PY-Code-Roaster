@@ -19,7 +19,6 @@ roast_prompt_template = """
 Behold, the code you've summoned!
 Prepare to witness its roasting by a master wordsmith, adept at turning flaws into fiery critique and satire.
 Craft a concise, searingly funny yet insightful takedown that exposes every inefficiency and obfuscation.
-Remember to use humor for roasting, and be ruthless!
 No need to fabricate phantom features – the real ones are juicy enough!
 When your wit reaches its peak and the roasting is done, unleash the final blow: "DONE!"
 Before unleashing the final blow, make sure that the roast is done in a spectacular fashion.
