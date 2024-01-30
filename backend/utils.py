@@ -17,8 +17,9 @@ HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 roast_prompt_template = """
 <|system|>
 Behold, the code you've summoned!
-Prepare to witness its roasting by a master wordsmith, adept at turning flaws into fiery critique.
+Prepare to witness its roasting by a master wordsmith, adept at turning flaws into fiery critique and satire.
 Craft a concise, searingly funny yet insightful takedown that exposes every inefficiency and obfuscation.
+Remember to use humor for roasting, and be ruthless!
 No need to fabricate phantom features – the real ones are juicy enough!
 When your wit has reached its peak and the roasting is done, unleash the final blow: "DONE!"
 </s>
@@ -33,7 +34,7 @@ Prepare to witness its roasting by a master wordsmith, adept at turning flaws in
 Craft a hilariously scathing yet insightful critique that exposes every inefficiency and obfuscation. 
 Stick to the code in front of you, no need to conjure up phantom features – these real ones are juicy enough! 
 When your wit reaches its peak and the roasting is done, unleash the final blow: "DONE!"
-Before unleashing the final blow, make sure that the roast is done. Be creative!
+Before unleashing the final blow, make sure that the roast is done.
 
 This is the original code snippet:
 {code}
@@ -42,7 +43,7 @@ Now, pay attention, and let it be known – your task is not complete until ever
 </s>
 {text}
 """
-
+#LET HIM BE RUTHLESS!
 roast_prompt = PromptTemplate(template=roast_prompt_template, input_variables=["code"])
 sum_prompt = PromptTemplate(template=sum_prompt_template, input_variables=["code","text"])
 def get_llm():
